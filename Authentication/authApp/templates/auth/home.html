@@ -1,0 +1,29 @@
+{% extends 'auth/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock title %}
+
+{% block head %}
+  <style>
+    h1 {
+      text-align: center;
+      color: rgb(221, 207, 207);
+    }
+
+    a {
+      text-decoration: none;
+      color: tomato;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+{% endblock head %}
+
+{% block content %}
+  <h1>This is home page.</h1>
+  <br>
+  <h1><a href="/signout/">Logout</a></h1>
+{% endblock content %}

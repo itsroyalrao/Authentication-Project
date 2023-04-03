@@ -1,0 +1,109 @@
+{% extends 'auth/base.html' %}
+{% load static %}
+
+{% block title %}Login{% endblock title %}
+
+{% block head %}
+  <style>
+    .flex-container {
+      display: flex;
+      flex-flow: row wrap;
+      width: 27.5%;
+      margin: auto;
+      margin-top: 50px;
+    }
+    
+    .main {
+      background-color: #fff;
+      padding: 20px 20px 10px;
+      border-radius: 10px;
+    }
+
+    .main input {
+      border: 3px inset darkslategrey;
+      width: 92.5%;
+      height: 50px;
+      padding-left: 5%;
+      font-size: large;
+      margin-top: -3px;
+    }
+
+    .main h1 {
+      color:darkslategrey;
+      text-align: center;
+      margin: 0px;
+      margin-bottom: 20px;
+    }
+
+    #username {
+      border-top-left-radius: 7px;
+      border-top-right-radius: 7px;
+    }
+
+    #password {
+      border-bottom-left-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    .message {
+      background-color: rgb(255, 255, 155);
+      border-radius: 5px;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .submit {
+      width: 100%;
+      height: 40px;
+      margin: 5px 0px;
+      border-radius: 10px;
+      background-color: darkslategrey;
+      color: white;
+      font-size: large;
+    }
+
+    a {
+      color: darkslategrey;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: tomato;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .flex-container {
+        width: 75%;
+      }
+    }
+  </style>
+{% endblock head %}
+
+{% block content %}
+  <div class='flex-container'>
+    <form action="/signin/" method="post">
+      {% csrf_token %}
+      <div class='main'>
+        <h1>Login</h1>
+        
+        <input type="text" name="username" id="username" placeholder='Username'>
+        <input type="password" name="password" id="password" placeholder='Password'>
+        
+        <div class='message'>
+          {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismmisible fade show" role='alert'>
+            <span style='color:red'><span class=''>{{message}}</span></span>
+            </div>
+          {% endfor %}
+        </div>
+
+        <button type="submit" class='submit'><b>Login</b></button>
+        <hr>
+        <div style='text-align: center'>
+          <h3>Don't have an account? - <a href="/">Sign Up</a></h3>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock content %}
